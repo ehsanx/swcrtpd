@@ -1,6 +1,6 @@
 library(arrangements)
 
-### The code was shared by Liang Xu
+### The code was created by Liang Xu
 temp <- c(6,4,2) # # number of cluster for each type (S,L) or (S,M,L)
 M <- temp
 N = rep(3,4) # #of clus transit per period
