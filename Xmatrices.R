@@ -29,6 +29,9 @@ cal_X <- function(M,cluster.size,SDB){
               "y_trt"=y_trt,"y_ctr"=y_ctr))
 }
 
+library(doParallel) 
+registerDoParallel(cores=3)
+# the following code is to repeat Cal_X 10000 times, one may use other function
 XYmtr <- foreach(i=1:10000) %dopar% {try(cal_X(
   ### 10000 was chosen as our simulation for power calculation (in powercal.R) was based on
   ### 10000 runs
