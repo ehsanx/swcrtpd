@@ -31,3 +31,9 @@ newpower <- function(M,allocation, cal_X){
   }
   return(list("coefs"=output,"consize"=con,"intsize"=int,"cor"=cor,"tot"=tots))
 }
+
+
+result <- foreach(i=1:nrow(Tx),.packages = 'nlme') %dopar% {try(newpower(
+  M=c(24,16,8),
+  allocation=Tx[i,],
+  XYmtr),TRUE)}
