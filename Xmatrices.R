@@ -33,8 +33,7 @@ library(doParallel)
 registerDoParallel(cores=3)
 # the following code is to repeat Cal_X 10000 times, one may use other function
 XYmtr <- foreach(i=1:10000) %dopar% {try(cal_X(
-  ### 10000 was chosen as our simulation for power calculation (in powercal.R) was based on
-  ### 10000 runs
+  ### 10000 was chosen as our simulation for power calculation (in powercal.R) was based on 10000 runs
   M=c(24,16,8), # number of clusters of each type (S,M,L) or (S,L)
   cluster.size=c(6.5, 20.61, 65.27), # avg cluster size of each type
   SDB_0.01 # cluster level variance
