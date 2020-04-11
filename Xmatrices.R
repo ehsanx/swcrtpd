@@ -1,6 +1,6 @@
 cal_X <- function(M,cluster.size,SDB){
-  # M=c(S,L) or M=c(S,M,L)
-  # generate X and Y for simulation
+### M=c(S,L) or M=c(S,M,L)
+### cluster.size inputs as the same order as M
   clus.size.list <- c()
   for (i in 1:length(M)){
     temp <- sample(c(floor(cluster.size[i]),floor(cluster.size[i])+1),
@@ -28,3 +28,11 @@ cal_X <- function(M,cluster.size,SDB){
   return(list("ID"=clus.id,"transitp"=X1,"clus.size"=X2, "tot"=tots,
               "y_trt"=y_trt,"y_ctr"=y_ctr))
 }
+
+XYmtr <- foreach(i=1:10000) %dopar% {try(cal_X(
+  ### 10000 was chosen as our simulation for power calculation (in powercal.R) was based on
+  ### 10000 runs
+  M=c(24,16,8), # number of clusters of each type (S,M,L) or (S,L)
+  cluster.size=c(6.5, 20.61, 65.27), # avg cluster size of each type
+  SDB_0.01 # cluster level variance
+  ),TRUE)}
