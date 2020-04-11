@@ -1,6 +1,6 @@
 newpower <- function(M,allocation, cal_X){
-  # cal_XY is the list of Xs and Ys used to run simulation
-  # all allocations were evaluated on the same list of Xs and Ys
+  # cal_X is the list of Xs and Ys used to run simulation
+  # all allocations were evaluated on the same 10000 dataset to reduce simulation errors
   fn1 <- function(x) x$clus.size 
   fn2 <- function(x) x$transitp
   fn3 <- function(x) x$y_trt 
